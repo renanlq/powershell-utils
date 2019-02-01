@@ -3,7 +3,6 @@
 ## Sumary
 * [Purpose](#purpose)
 * [Dependencies](#dependencies)
-* [Run](#run)
 * [Contribution](#Contribution)
 
 ## Purpose

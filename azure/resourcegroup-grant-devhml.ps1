@@ -6,7 +6,7 @@
 # See all env variables
 # PS: Get-ChildItem env:
 
-# User credentials
+# Previous insert user credentials in systen environment variables
 # $user = "$($env:script_user)"
 # $pass =  "$($env:script_pass)"
 
