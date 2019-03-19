@@ -9,10 +9,11 @@
 Repo to add powershell scripts that automate daily tasks.
 
 ## Scripts
-Azure:  
+Azure AD:  
 1. [Create groups from list and add owner](https://github.com/renanlq/powershell-utils/blob/master/azure/azuread-group-new.ps1);  
 2. [Add user to existing groups](https://github.com/renanlq/powershell-utils/blob/master/azure/azuread-group-add-members.ps1).  
-Git:
+
+Git:  
 1. [Migrate repositories from Bitbucket to Azure DevOps](https://github.com/renanlq/powershell-utils/blob/master/git/bitbucket-azuredevops.ps1).  
 
 ## Contribution
