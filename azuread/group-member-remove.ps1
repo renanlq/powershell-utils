@@ -15,19 +15,29 @@ $user = "$($env:script_user)"
 $pass =  "$($env:script_pass)"
 
 $azgroupname = "az-"
+$azmemberid = "user@domain.com"
 
 Try {
     $securepass = $pass | ConvertTo-SecureString -AsPlainText -Force
     $UserCredential = New-Object System.Management.Automation.PSCredential -ArgumentList $user, $securepass
     Connect-AzureAD -Credential $UserCredential
 
-    $azadgroups = Get-AzureADGroup -SearchString "$azgroupname"
-    $cont = 1
-    Foreach ($g in $azadgroups)
-    {
-        Write-Host "$cont - " $g."DisplayName"
-        $cont++
+    $adgroup = Get-AzureADGroup -Filter "DisplayName eq '$azgroupname'"
+    If(-Not $adgroup) { 
+        Write-Host -Foreground Yellow "$(Get-Date) - No existing group for value: '$azgroupname'"
+        Continue
     }
+    Write-Host "GROUPID: " $adgroup."ObjectId"
+
+    $user = Get-AzureADUser -ObjectId "$azmemberid"
+    If(-Not $user) { 
+        Write-Host -Foreground Yellow "$(Get-Date) - No existing user for value: '$azmemberid'"
+        Continue
+    }
+    Write-Host "USERID: " $user."ObjectId"
+
+    Remove-AzureADGroupMember -ObjectId $adgroup."ObjectId" -MemberId $user."ObjectId"
+    Write-Host "$(Get-Date) - Removing '$azmemberid' from '$azgroupname'"
 }
 Catch {
     $formatstring = "{0} : {1}`n{2}`n" +

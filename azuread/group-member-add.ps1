@@ -15,27 +15,31 @@ $user = "$($env:script_user)"
 $pass =  "$($env:script_pass)"
 
 $azgroup = "group-name"
-$azusers = @("user01", "user02", "user03")
+$azusers = @("user01", "user02")
 $azemaildomain = "@domain.com"
 
 Try {
-    # Auth
     $securepass = $pass | ConvertTo-SecureString -AsPlainText -Force
     $UserCredential = New-Object System.Management.Automation.PSCredential -ArgumentList $user, $securepass
     Connect-AzureAD -Credential $UserCredential
 
-    # Get group
     $adgroup = Get-AzureADGroup -Filter "DisplayName eq '$azgroup'"
+    If(-Not $adgroup) { 
+        Write-Host -Foreground Yellow "$(Get-Date) - No existing group with name: '$azgroup'"
+        Continue
+    }
+
     Write-Host "$(Get-Date) - Get group $azgroup($(($adgroup).ObjectId))"
 
     Foreach ($u in $azusers)
     {
-        # Get user from email
         $aduser = Get-AzureADUser -ObjectId "$u$azemaildomain"
-        Write-Host "$(Get-Date) - Adding $u$azemaildomain($(($aduser).ObjectId))"
-
-        # Add user to group
+        If(-Not $aduser) { 
+            Write-Host -Foreground Yellow "$(Get-Date) - No existing user for value: '$u$azemaildomain'"
+            Continue
+        }
         Add-AzureADGroupMember -ObjectId ($adgroup).ObjectId -RefObjectId ($aduser).ObjectId
+        Write-Host "$(Get-Date) - Adding $u$azemaildomain($(($aduser).ObjectId))"
     }
 }
 Catch {

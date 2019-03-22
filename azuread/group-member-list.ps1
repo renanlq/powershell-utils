@@ -17,13 +17,18 @@ $pass =  "$($env:script_pass)"
 $azgroupname = "az-"
 
 Try {
-    # Auth
     $securepass = $pass | ConvertTo-SecureString -AsPlainText -Force
     $UserCredential = New-Object System.Management.Automation.PSCredential -ArgumentList $user, $securepass
     Connect-AzureAD -Credential $UserCredential
 
     $azadgroups = Get-AzureADGroup -SearchString "$azgroupname"
+    If(-Not $azadgroups) { 
+        Write-Host -Foreground Yellow "$(Get-Date) - No results for value: '$azgroupname'"
+        Continue
+    }
+
     $cont = 1
+
     Foreach ($g in $azadgroups)
     {
         $groupName = $g."DisplayName"

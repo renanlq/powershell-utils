@@ -18,12 +18,10 @@ $azgroups = @("group01","group02")
 $azgroupowneremail = "name@domain.com"
 
 Try {
-    # Auth
     $securepass = $pass | ConvertTo-SecureString -AsPlainText -Force
     $UserCredential = New-Object System.Management.Automation.PSCredential -ArgumentList $user, $securepass
     Connect-AzureAD -Credential $UserCredential
 
-    # Get owner ObjectId
     $azgroupowner = Get-AzureADUser -ObjectId "$azgroupowneremail"
 
     Foreach ($g in $azgroups)
@@ -33,11 +31,10 @@ Try {
             Write-Host -Foreground DarkYellow "$(Get-Date) - Group $g already exists"
             Continue
         }
-        # Create group
+
         $azgroup = New-AzureADGroup -DisplayName $g -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
         Write-Host "$(Get-Date) - Group $($g) created"
 
-        # Add owner
         Add-AzureADGroupOwner -ObjectId ($azgroup).ObjectId -RefObjectId ($azgroupowner).ObjectId
         Write-Host "$(Get-Date) - Add $azgroupowneremail as group owner"
     }
