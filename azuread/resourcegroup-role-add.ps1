@@ -16,7 +16,8 @@ $user = "$($env:script_user)"
 $pass =  "$($env:script_pass)"
 
 $azplroles = @("Application Insights Component Contributor", "Reader", "Reader and Data Access")
-$azsrroles = @("Storage Account Contributor", "Website Contributor")
+$azsrroles = @("API Management Service Contributor", "Cognitive Services Contributor", "Redis Cache Contributor", `
+                "Search Service Contributor", "Storage Account Contributor", "Storage Blob Data Contributor", "Website Contributor")
 
 # Edit - Subscriptions and resource group childs
 $azsubscription = @("subscription-hml","subscription-prd")
