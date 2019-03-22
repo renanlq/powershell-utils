@@ -15,6 +15,7 @@ Azure AD:
 3. [List groups members](https://github.com/renanlq/powershell-utils/blob/master/azuread/group-member-list.ps1)
 4. [Remove group member](https://github.com/renanlq/powershell-utils/blob/master/azuread/group-member-remove.ps1)
 5. [Create groups with owner](https://github.com/renanlq/powershell-utils/blob/master/azuread/group-new.ps1)
+6. [Assign role to group in resource group](https://github.com/renanlq/powershell-utils/blob/master/azuread/resourcegroup-role-add.ps1)
 
 Git:  
 1. [Migrate repositories from Bitbucket to Azure DevOps](https://github.com/renanlq/powershell-utils/blob/master/git/bitbucket-azuredevops.ps1)
