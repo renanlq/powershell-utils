@@ -5,10 +5,10 @@
 # - https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#users
 
 # Dependencies:
+#   Modules: AzureAD
 #   Set user environment variable:and see them:
 #     PS:> [Environment]::SetEnvironmentVariable("name", "value", "User")
 #     PS:> Get-ChildItem env:
-#   Modules: AzureAD
 
 # Previous insert user credentials in systen environment variables
 $user = "$($env:script_user)"
