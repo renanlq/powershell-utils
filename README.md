@@ -21,7 +21,7 @@ Git:
 1. [Migrate repositories from Bitbucket to Azure DevOps](https://github.com/renanlq/powershell-utils/blob/master/git/bitbucket-azuredevops.ps1)
 
 Salesforce:  
-1. [Dataloader installer](https://github.com/renanlq/powershell-utils/blob/master/salesforce/dataloader-installer.ps1)
+1. [Data Loader installer](https://github.com/renanlq/powershell-utils/blob/master/salesforce/dataloader-installer.ps1)
 
 ## Contribution
 If you want to contribute, please read more about markdown tags to edit README file, [Markdown guide](https://docs.microsoft.com/en-us/vsts/project/wiki/markdown-guidance?view=vsts)
