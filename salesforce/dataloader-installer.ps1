@@ -12,7 +12,7 @@
 $dataloaderfolder = "$($env:USERPROFILE)\dataloader"
 $dataloaderinstaller = "C:\instalador\install.bat"
 $dataloaderexe = "$($dataloaderfolder)\dataloader-46.0.0-uber.jar"
-$dataloaderurldownload = "https://vivo.my.salesforce.com/dwnld/DataLoader/dataloader_win.zip"
+$dataloaderurldownload = "https://[company].my.salesforce.com/dwnld/DataLoader/dataloader_win.zip"
 # ATENÇÃO PARA ATUALIZAÇôES DO ZULU !!!
 $zuluurldownload = "https://cdn.azul.com/zulu/bin/zulu8.40.0.25-ca-jdk8.0.222-win_x64.msi"
 $zulufile = "zulu8_x64.msi"
